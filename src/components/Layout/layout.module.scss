@@ -4,15 +4,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-  }
+  height: 50px;
+  border-bottom: 1px solid colors.$GRAY50;
 
   .logoText {
     height: 24px;
     fill: colors.$PRIMARY;
+  }
+}
+
+.navigation {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid colors.$GRAY50;
+  }
+
+  li {
+    position: relative;
+    padding: 12px;
+    margin: 0 10px;
+  }
+
+  a {
+    font-weight: 500;
+    color: colors.$GRAY800;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      content: '';
+      background-color: colors.$PRIMARY;
+      transform: scale(0);
+    }
+  }
+
+  .isActive {
+    color: colors.$PRIMARY;
+
+    &::after {
+      transition: transform 0.2s;
+      transform: scale(1);
+    }
   }
 }

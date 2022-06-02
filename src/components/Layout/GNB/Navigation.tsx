@@ -3,28 +3,40 @@ import cx from 'classnames'
 
 import styles from '../layout.module.scss'
 
-const Navagation = () => {
+interface INavItem {
+  to: string
+  title: string
+}
+
+const navList: INavItem[] = [
+  {
+    to: '/',
+    title: '홈',
+  },
+  {
+    to: 'search',
+    title: '검색',
+  },
+  {
+    to: 'favorites',
+    title: '즐겨찾기',
+  },
+]
+
+const Navigation = () => {
   return (
     <nav className={styles.navigation}>
       <ul>
-        <li>
-          <NavLink to='/' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
-            홈
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='search' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
-            검색
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='favorites' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
-            즐겨찾기
-          </NavLink>
-        </li>
+        {navList.map((item) => (
+          <li key={`gnb-item-${item.title}`}>
+            <NavLink to={item.to} className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
+              {item.title}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   )
 }
 
-export default Navagation
+export default Navigation
