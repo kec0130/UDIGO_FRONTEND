@@ -12,6 +12,11 @@ const GNB = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to='search' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
+            검색
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='favorites' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
             즐겨찾기
           </NavLink>
