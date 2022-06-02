@@ -1,5 +1,9 @@
 @use '/src/styles/constants/colors';
 
+.mainContainer {
+  padding: 20px 16px;
+}
+
 .logoWrapper {
   display: flex;
   align-items: center;
@@ -8,7 +12,7 @@
   border-bottom: 1px solid colors.$GRAY50;
 
   .logoText {
-    height: 24px;
+    height: 20px;
     fill: colors.$PRIMARY;
   }
 }

@@ -1,3 +1,68 @@
-.hidden {
+@use '/src/styles/constants/colors';
+
+.textWrapper {
+  height: 50px;
+  line-height: 1.5;
+  color: colors.$GRAY800;
+  text-align: center;
+
+  .resultSentence {
+    line-height: 50px;
+
+    mark {
+      color: colors.$PRIMARY;
+      background-color: transparent;
+    }
+  }
+}
+
+input {
   display: none;
+}
+
+.imageWrapper {
+  height: calc(100vh - 280px);
+  margin: 20px 0;
+  overflow: hidden;
+  border: 1.5px dashed colors.$PRIMARY;
+  border-radius: 10px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: colors.$GRAY300;
+    text-align: center;
+    cursor: pointer;
+
+    svg {
+      stroke: currentColor;
+    }
+
+    span {
+      display: block;
+      margin-top: 16px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+
+  button {
+    width: 50%;
+
+    + button {
+      margin-left: 20px;
+    }
+  }
 }

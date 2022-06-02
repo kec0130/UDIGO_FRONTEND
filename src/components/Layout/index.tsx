@@ -5,10 +5,12 @@ import styles from './layout.module.scss'
 
 const Layout = () => {
   return (
-    <div className={styles.container}>
+    <>
       <GNB />
-      <Outlet />
-    </div>
+      <main className={styles.mainContainer}>
+        <Outlet />
+      </main>
+    </>
   )
 }
 
