@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes } from 'types/place'
@@ -90,7 +91,7 @@ const Search = () => {
           {imageSrc && (
             <>
               <Button value='다른 이미지 선택' buttonStyle='secondary' onClick={handleNewImageButtonClick} />
-              {response ? <Button value='지도에서 찾기' /> : <Button value='장소 검색' type='submit' />}
+              {response ? <Link to='maps'>지도에서 찾기</Link> : <Button value='장소 검색' type='submit' />}
             </>
           )}
         </div>
