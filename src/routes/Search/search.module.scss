@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
 
 .searchPage {
   padding: 20px;
@@ -68,6 +69,10 @@ input {
     + button {
       margin-left: 20px;
     }
+
+    &:disabled {
+      cursor: wait;
+    }
   }
 
   a {
@@ -77,7 +82,7 @@ input {
     color: colors.$WHITE;
     text-align: center;
     background-color: colors.$PRIMARY;
-    border-radius: 8px;
+    border-radius: sizes.$BORDER_RADIUS;
 
     &:active {
       background-color: colors.$PRIMARY_PRESSED;

@@ -71,13 +71,14 @@ const Search = () => {
     //   .catch((err) => console.log(err))
 
     // TODO: remove dummy data
-    // const data: IPlaceApiRes = {
-    //   label_category: '63빌딩',
-    //   sentence: '아주 높은 63빌딩이군요!',
-    // }
+    const data: IPlaceApiRes = {
+      label_category: '63빌딩',
+      sentence: '아주 높은 63빌딩이군요!',
+    }
 
-    // setResponse(data)
-    // setQuery(data.label_category)
+    setResponse(data)
+    setQuery(data.label_category)
+    setIsLoading(false)
   }
 
   const handleNewImageButtonClick = () => inputRef.current?.click()

@@ -1,9 +1,10 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
 
 button {
   height: 40px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: sizes.$BORDER_RADIUS;
 
   &.large {
     width: 100px;

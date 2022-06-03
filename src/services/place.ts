@@ -1,4 +1,4 @@
-const PLACE_BASE_URL = 'http://3.35.235.48'
+const PLACE_BASE_URL = 'http://54.180.137.89'
 
 export const getPlaceInferenceApi = (formData: FormData) =>
   fetch(`${PLACE_BASE_URL}/api/places/inference/`, {
