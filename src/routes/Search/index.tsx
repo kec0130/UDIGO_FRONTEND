@@ -1,6 +1,8 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useRecoil } from 'hooks/useRecoil'
+import { queryState } from 'states/map'
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes } from 'types/place'
 
@@ -20,6 +22,7 @@ const Search = () => {
   const [imageSrc, setImageSrc] = useState('')
   const [imageFile, setImageFile] = useState<File>()
   const [response, setResponse] = useState<IPlaceApiRes>()
+  const [, setQuery] = useRecoil(queryState)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +50,14 @@ const Search = () => {
     if (!imageFile) return
     formData.append('image', imageFile)
 
+    const onSuccess = (data: IPlaceApiRes) => {
+      setResponse(data)
+      setQuery(data.label_category)
+    }
+
     getPlaceInferenceApi(formData)
       .then((res) => res.json())
-      .then((data: IPlaceApiRes) => setResponse(data))
+      .then((data: IPlaceApiRes) => onSuccess(data))
       .catch((err) => console.log(err))
   }
 
