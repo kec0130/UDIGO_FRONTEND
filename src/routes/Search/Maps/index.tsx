@@ -60,7 +60,13 @@ const Maps = () => {
               onClick={() => setSelectedIndex(index)}
               clickable
             >
-              {index === selectedIndex && <div className={styles.infoWindow}>{placeName}</div>}
+              {index === selectedIndex && (
+                <div className={styles.infoWindow}>
+                  <a href={`https://map.kakao.com/link/map/${id}`} target='_blank' rel='noreferrer'>
+                    {placeName}
+                  </a>
+                </div>
+              )}
             </MapMarker>
           )
         })}
