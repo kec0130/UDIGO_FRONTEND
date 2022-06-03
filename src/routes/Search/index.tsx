@@ -83,14 +83,14 @@ const Search = () => {
 
   const handleNewImageButtonClick = () => inputRef.current?.click()
 
-  const highlightSentence = () => {
+  const getMarkedSentence = () => {
     if (!response) return null
     const { sentence, label_category: labelCategory } = response
     const startIndex = sentence.indexOf(labelCategory)
     const endIndex = startIndex + labelCategory.length
 
     return (
-      <p className={styles.resultSentence}>
+      <p>
         {sentence.slice(0, startIndex)}
         <mark>{sentence.slice(startIndex, endIndex)}</mark>
         {sentence.slice(endIndex)}
@@ -100,11 +100,17 @@ const Search = () => {
 
   const getGuideText = () => {
     if (isLoading) return LOADING_TEXT
-    if (response) return highlightedSentence
+    if (response) return resultSentence
     return INIT_TEXT
   }
 
-  const highlightedSentence = highlightSentence()
+  const resultSentence = (
+    <>
+      {getMarkedSentence()}
+      <p>하단의 버튼을 누르면 지도 검색으로 이동합니다.</p>
+    </>
+  )
+
   const guideText = getGuideText()
 
   return (

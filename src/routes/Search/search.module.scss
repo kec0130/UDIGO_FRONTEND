@@ -11,13 +11,9 @@
   color: colors.$GRAY800;
   text-align: center;
 
-  .resultSentence {
-    line-height: 50px;
-
-    mark {
-      color: colors.$PRIMARY;
-      background-color: transparent;
-    }
+  mark {
+    color: colors.$PRIMARY;
+    background-color: transparent;
   }
 }
 

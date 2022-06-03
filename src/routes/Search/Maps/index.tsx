@@ -7,8 +7,8 @@ import { useCurrentPosition } from 'hooks/useCurrentPosition'
 import { getMapSearchApi } from 'services/map'
 import { IPlace } from 'types/map'
 
-import styles from './maps.module.scss'
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/svgs'
+import styles from './maps.module.scss'
 
 const PER_PAGE = 15
 
@@ -50,7 +50,7 @@ const Maps = () => {
 
   return (
     <div>
-      <Map className={styles.mapWrapper} center={{ lat: mapCenter.lat, lng: mapCenter.lng }}>
+      <Map className={styles.mapWrapper} center={mapCenter}>
         {searchResult?.map((place, index) => {
           const { id, x, y, place_name: placeName } = place
           return (
