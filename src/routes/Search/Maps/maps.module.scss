@@ -1,4 +1,6 @@
+@use '/src/styles/constants/sizes';
+
 .mapWrapper {
   width: 100%;
-  height: 80vh;
+  height: calc(100vh - sizes.$GNB_HIGHT_M);
 }

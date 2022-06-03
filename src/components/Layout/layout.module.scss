@@ -1,7 +1,8 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
 
-.mainContainer {
-  padding: 20px 16px;
+main {
+  min-height: calc(100vh - sizes.$GNB_HIGHT_M);
 }
 
 .logoWrapper {
