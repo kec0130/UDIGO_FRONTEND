@@ -17,10 +17,6 @@ const navList: INavItem[] = [
     to: 'search',
     title: '검색',
   },
-  {
-    to: 'favorites',
-    title: '즐겨찾기',
-  },
 ]
 
 const Navigation = () => {

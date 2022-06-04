@@ -4,7 +4,6 @@ import Layout from 'components/Layout'
 import Home from './Home'
 import Search from './Search'
 import Maps from './Search/Maps'
-import Favorites from './Favorites'
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='search' element={<Search />} />
         <Route path='search/maps' element={<Maps />} />
-        <Route path='favorites' element={<Favorites />} />
       </Route>
       <Route path='*' element={<div>404</div>} />
     </Routes>
