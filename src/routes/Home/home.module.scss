@@ -1,6 +1,10 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/constants/sizes';
 
+section {
+  margin: 30px auto;
+}
+
 .introduction {
   font-size: 20px;
   font-weight: 500;

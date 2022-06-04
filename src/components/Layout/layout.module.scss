@@ -1,8 +1,20 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/constants/sizes';
+@use '/src/styles/mixins/responsive';
 
 main {
+  max-width: 1300px;
   min-height: calc(100vh - sizes.$GNB_HIGHT_M);
+  padding-top: sizes.$GNB_HIGHT_M;
+  margin: 0 auto;
+}
+
+.headerNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: colors.$WHITE;
 }
 
 .logoWrapper {
@@ -12,18 +24,19 @@ main {
   height: 50px;
   border-bottom: 1px solid colors.$GRAY50;
 
-  .logoText {
+  svg {
     height: 20px;
     fill: colors.$PRIMARY;
   }
 }
 
 .navigation {
+  border-bottom: 1px solid colors.$GRAY50;
+
   ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid colors.$GRAY50;
   }
 
   li {
@@ -41,7 +54,7 @@ main {
       left: 0;
       bottom: 0;
       width: 100%;
-      height: 2px;
+      height: 3px;
       content: '';
       background-color: colors.$PRIMARY;
       transform: scale(0);
@@ -54,6 +67,52 @@ main {
     &::after {
       transition: transform 0.2s;
       transform: scale(1);
+    }
+  }
+}
+
+@include responsive.after(SD) {
+  main {
+    min-height: calc(100vh - sizes.$GNB_HIGHT);
+    padding-top: sizes.$GNB_HIGHT;
+  }
+
+  .headerNav {
+    border-bottom: 1px solid colors.$GRAY50;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 12%);
+  }
+
+  .headerWrapper {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1300px;
+    height: sizes.$GNB_HIGHT;
+    padding: 0 20px;
+    margin: 0 auto;
+
+    .logoWrapper,
+    .navigation {
+      height: 100%;
+      border: none;
+    }
+
+    .logoWrapper {
+      margin-right: 40px;
+      svg {
+        height: 24px;
+      }
+    }
+
+    ul {
+      height: 100%;
+
+      li {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-size: 18px;
+      }
     }
   }
 }
