@@ -6,3 +6,4 @@ export { ReactComponent as LoadingIcon } from './loading-quarter.svg'
 
 export { ReactComponent as ArrowLeftIcon } from './chevron_left.svg'
 export { ReactComponent as ArrowRightIcon } from './chevron_right.svg'
+export { ReactComponent as MapIcon } from './map-marked.svg'

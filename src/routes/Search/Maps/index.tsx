@@ -7,7 +7,7 @@ import { useCurrentPosition } from 'hooks/useCurrentPosition'
 import { getMapSearchApi } from 'services/map'
 import { IPlace } from 'types/map'
 
-import { ArrowLeftIcon, ArrowRightIcon } from 'assets/svgs'
+import { ArrowLeftIcon, ArrowRightIcon, MapIcon } from 'assets/svgs'
 import styles from './maps.module.scss'
 
 const PER_PAGE = 15
@@ -60,13 +60,7 @@ const Maps = () => {
               onClick={() => setSelectedIndex(index)}
               clickable
             >
-              {index === selectedIndex && (
-                <div className={styles.infoWindow}>
-                  <a href={`https://map.kakao.com/link/map/${id}`} target='_blank' rel='noreferrer'>
-                    {placeName}
-                  </a>
-                </div>
-              )}
+              {index === selectedIndex && <div className={styles.infoWindow}>{placeName}</div>}
             </MapMarker>
           )
         })}
@@ -83,9 +77,24 @@ const Maps = () => {
                 <span>{searchResult[selectedIndex].address_name}</span>
               </div>
             </div>
-            <button type='button' onClick={handleNextClick} disabled={selectedIndex === PER_PAGE - 1} aria-label='next'>
-              <ArrowRightIcon />
-            </button>
+            <div className={styles.right}>
+              <a
+                href={`https://map.kakao.com/link/map/${searchResult[selectedIndex].id}`}
+                target='_blank'
+                rel='noreferrer'
+                title='Open in kakao map'
+              >
+                <MapIcon />
+              </a>
+              <button
+                type='button'
+                onClick={handleNextClick}
+                disabled={selectedIndex === PER_PAGE - 1}
+                aria-label='next'
+              >
+                <ArrowRightIcon />
+              </button>
+            </div>
           </div>
         </div>
       )}
