@@ -35,9 +35,7 @@ const Maps = () => {
       lat: currentPosition.lat,
       lng: currentPosition.lng,
       size: PER_PAGE,
-    })
-      .then((res) => setSearchResult(res.data.documents))
-      .catch((err) => console.log(err))
+    }).then((res) => setSearchResult(res.data.documents))
   }, [currentPosition.lat, currentPosition.lng, query])
 
   useEffect(() => {
