@@ -2,40 +2,109 @@
 @use '/src/styles/constants/sizes';
 @use '/src/styles/mixins/responsive';
 
-section {
-  margin: 30px auto;
-}
+.homepage {
+  padding-left: 0;
+  padding-right: 0;
 
-.introduction {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.sampleImages {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  flex-wrap: wrap;
-  gap: 20px;
-
-  @include responsive.after(ML) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @include responsive.after(SD) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @include responsive.after(LD) {
-    grid-template-columns: repeat(6, 1fr);
+  .description {
+    padding: 0 20px;
   }
 
-  li {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: sizes.$BORDER_RADIUS;
+  section {
+    margin: 40px 0 20px;
+  }
 
-    button {
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  p {
+    margin: 10px 0 20px;
+    line-height: 1.5;
+
+    @include responsive.after(SD) {
+      font-size: 18px;
+    }
+  }
+
+  .introBackground {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+
+    @include responsive.after(SD) {
+      height: 400px;
+    }
+
+    @include responsive.after(LD) {
+      margin: 0 20px;
+    }
+
+    .introduction {
+      padding: 30px 20px 20px;
+      text-align: right;
+
+      @include responsive.after(SD) {
+        padding-right: 40px;
+      }
+      @include responsive.after(LD) {
+        padding-right: 60px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .guideImages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    li {
+      border: 1px solid colors.$GRAY100;
+    }
+
+    @include responsive.after(SD) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .sampleImages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include responsive.after(ML) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include responsive.after(SD) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include responsive.after(LD) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  .guideImages,
+  .sampleImages {
+    li {
       width: 100%;
       height: 100%;
+      overflow: hidden;
+      border-radius: sizes.$BORDER_RADIUS;
 
       img {
         width: 100%;

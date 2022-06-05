@@ -23,20 +23,15 @@
       margin-right: 10px;
     }
   }
-
-  mark {
-    color: colors.$PRIMARY;
-    background-color: transparent;
-  }
-}
-
-input {
-  display: none;
 }
 
 form {
   max-width: 800px;
   margin: 16px auto 0;
+
+  input {
+    display: none;
+  }
 }
 
 .imageWrapper {

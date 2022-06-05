@@ -7,9 +7,9 @@ import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes } from 'types/place'
 
 import Button from 'components/Button'
+import LoadingSpinner from 'components/LoadingSpinner'
 import { ImageIcon } from 'assets/svgs'
 import styles from './search.module.scss'
-import LoadingSpinner from 'components/LoadingSpinner'
 
 const INIT_TEXT = (
   <p>
@@ -57,28 +57,17 @@ const Search = () => {
     e.preventDefault()
     setIsLoading(true)
 
-    // const formData = new FormData()
-    // if (!imageFile) return
-    // formData.append('image', imageFile)
+    const formData = new FormData()
+    if (!imageFile) return
+    formData.append('image', imageFile)
 
-    // getPlaceInferenceApi(formData)
-    //   .then((res) => res.json())
-    //   .then((data: IPlaceApiRes) => {
-    //     setResponse(data)
-    //     setQuery(data.label_category)
-    //     setIsLoading(false)
-    //   })
-    //   .catch((err) => console.log(err))
-
-    // TODO: remove dummy data
-    const data: IPlaceApiRes = {
-      label_category: '63빌딩',
-      sentence: '아주 높은 63빌딩이군요!',
-    }
-
-    setResponse(data)
-    setQuery(data.label_category)
-    setIsLoading(false)
+    getPlaceInferenceApi(formData)
+      .then((res) => res.json())
+      .then((data: IPlaceApiRes) => {
+        setResponse(data)
+        setQuery(data.label_category)
+        setIsLoading(false)
+      })
   }
 
   const handleNewImageButtonClick = () => inputRef.current?.click()
@@ -104,12 +93,7 @@ const Search = () => {
     return INIT_TEXT
   }
 
-  const resultSentence = (
-    <>
-      {getMarkedSentence()}
-      <p>하단의 버튼을 누르면 지도 검색으로 이동합니다.</p>
-    </>
-  )
+  const resultSentence = <>{getMarkedSentence()}</>
 
   const guideText = getGuideText()
 
