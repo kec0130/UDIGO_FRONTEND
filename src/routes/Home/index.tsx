@@ -19,13 +19,13 @@ const IMAGES = [
 
 const Home = () => {
   return (
-    <div className={styles.homepage}>
+    <div className='pageContainer'>
       <section className={styles.introduction}>
         <h1>AI가 찾아주는 나만의 Place</h1>
         <h2>AI가 이미지를 분석하여 장소를 추론합니다.</h2>
       </section>
       <section>
-        <header>UDIGO 체험해보기</header>
+        <h3>UDIGO 체험해보기</h3>
         <p>아래 예시 이미지를 눌러 이미지 검색을 체험해보세요.</p>
         <ul className={styles.sampleImages}>
           {IMAGES.map((image) => (

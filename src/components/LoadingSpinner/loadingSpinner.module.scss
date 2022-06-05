@@ -1,5 +1,11 @@
 @use '/src/styles/constants/colors';
 
+.loadingWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loadingIcon {
   width: 24px;
   height: 24px;

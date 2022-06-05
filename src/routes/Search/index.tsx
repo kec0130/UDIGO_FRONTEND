@@ -20,10 +20,10 @@ const INIT_TEXT = (
 )
 
 const LOADING_TEXT = (
-  <>
+  <div className={styles.loading}>
     <LoadingSpinner />
-    이미지 분석 중
-  </>
+    <span>이미지 분석 중</span>
+  </div>
 )
 
 const Search = () => {
@@ -114,7 +114,7 @@ const Search = () => {
   const guideText = getGuideText()
 
   return (
-    <div className={styles.searchPage}>
+    <div className='pageContainer'>
       <div className={styles.textWrapper}>{guideText}</div>
       <form onSubmit={handleSubmit}>
         <input type='file' accept='image/*' onChange={handleFileChange} ref={inputRef} id='image-input' />

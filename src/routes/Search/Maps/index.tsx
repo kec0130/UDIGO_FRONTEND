@@ -49,7 +49,7 @@ const Maps = () => {
   }, [searchResult, selectedIndex, setMapCenter])
 
   return (
-    <div>
+    <div className={styles.mapPage}>
       <Map className={styles.mapWrapper} center={mapCenter}>
         {searchResult?.map((place, index) => {
           const { id, x, y, place_name: placeName } = place
