@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from 'components/Layout'
 import Home from './Home'
 import Search from './Search'
-import Maps from './Search/Maps'
+import Maps from './Maps'
 
 const App = () => {
   return (
