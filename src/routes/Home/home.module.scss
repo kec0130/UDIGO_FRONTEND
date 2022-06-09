@@ -91,39 +91,11 @@
   }
 }
 
-.guideImages {
+.imageList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 
-  li {
-    border: 1px solid colors.$GRAYD;
-  }
-
-  @include responsive.after(SD) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-  }
-}
-
-.sampleImages {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-
-  @include responsive.after(ML) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @include responsive.after(SD) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @include responsive.after(LD) {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-.guideImages,
-.sampleImages {
   li {
     width: 100%;
     height: 100%;
@@ -135,5 +107,28 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+
+.guideImages {
+  li {
+    border: 1px solid colors.$GRAYD;
+  }
+
+  @include responsive.after(SD) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+}
+
+.sampleImages {
+  @include responsive.after(ML) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include responsive.after(SD) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include responsive.after(LD) {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
