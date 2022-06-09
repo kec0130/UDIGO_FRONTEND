@@ -15,7 +15,7 @@
   .infoWindow {
     padding: 5px;
     font-size: 14px;
-    color: colors.$GRAY800;
+    color: colors.$GRAY3;
   }
 }
 
@@ -45,7 +45,7 @@
         margin: 0 8px;
         font-size: 14px;
         line-height: 1.3;
-        color: colors.$GRAY800;
+        color: colors.$GRAY3;
       }
 
       .title {
@@ -71,7 +71,7 @@
     }
 
     svg {
-      fill: colors.$GRAY300;
+      fill: colors.$GRAY9;
     }
 
     button:disabled {

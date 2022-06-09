@@ -37,11 +37,11 @@ button {
     border: 1.5px solid colors.$PRIMARY;
 
     &:active {
-      background-color: colors.$GRAY50;
+      background-color: colors.$GRAYE;
     }
 
     &:disabled {
-      background-color: colors.$GRAY50;
+      background-color: colors.$GRAYE;
       opacity: 0.7;
     }
   }
@@ -50,11 +50,11 @@ button {
     color: colors.$PRIMARY;
 
     &:active {
-      background-color: colors.$GRAY50;
+      background-color: colors.$GRAYE;
     }
 
     &:disabled {
-      background-color: colors.$GRAY50;
+      background-color: colors.$GRAYE;
       opacity: 0.7;
     }
   }

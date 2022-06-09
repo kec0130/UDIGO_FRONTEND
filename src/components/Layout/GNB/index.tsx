@@ -6,7 +6,7 @@ import styles from '../layout.module.scss'
 
 const GNB = () => {
   return (
-    <header className={styles.headerNav}>
+    <header className={styles.gnb}>
       <div className={styles.headerWrapper}>
         <div className={styles.logoWrapper}>
           <Link to='/'>

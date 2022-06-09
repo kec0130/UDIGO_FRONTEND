@@ -5,6 +5,7 @@
 .homepage {
   padding-left: 0;
   padding-right: 0;
+  color: colors.$GRAY1;
 
   .description {
     padding: 0 20px;
@@ -12,28 +13,42 @@
 
   section {
     margin: 40px 0 20px;
+
+    + section {
+      margin-top: 60px;
+    }
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 500;
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 500;
-  }
-
-  h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
   }
 
   p {
-    margin: 10px 0 20px;
+    margin: 16px 0 24px;
+    color: colors.$GRAY3;
     line-height: 1.5;
+  }
 
-    @include responsive.after(SD) {
+  strong {
+    color: colors.$PRIMARY;
+  }
+
+  @include responsive.after(SD) {
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
       font-size: 18px;
     }
   }
@@ -41,7 +56,7 @@
   .introBackground {
     height: 300px;
     background-size: cover;
-    background-position: center;
+    background-position: right;
 
     @include responsive.after(SD) {
       height: 400px;
@@ -55,16 +70,22 @@
       padding: 30px 20px 20px;
       text-align: right;
 
-      @include responsive.after(SD) {
-        padding-right: 40px;
-      }
-      @include responsive.after(LD) {
-        padding-right: 60px;
-      }
-
       p {
         margin-top: 20px;
-        font-size: 20px;
+        font-size: 18px;
+        color: colors.$GRAY1;
+      }
+
+      @include responsive.after(SD) {
+        padding-right: 40px;
+
+        p {
+          font-size: 20px;
+        }
+      }
+
+      @include responsive.after(LD) {
+        padding-right: 60px;
       }
     }
   }
@@ -75,11 +96,12 @@
     gap: 20px;
 
     li {
-      border: 1px solid colors.$GRAY100;
+      border: 1px solid colors.$GRAYD;
     }
 
     @include responsive.after(SD) {
       grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
     }
   }
 
