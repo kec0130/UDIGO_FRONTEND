@@ -12,6 +12,10 @@
   line-height: 1.5;
   color: colors.$GRAY3;
 
+  @include responsive.after(SD) {
+    font-size: 18px;
+  }
+
   .loading {
     display: flex;
     flex-direction: row;
@@ -102,11 +106,5 @@ form {
     &:active {
       background-color: colors.$PRIMARY_PRESSED;
     }
-  }
-}
-
-@include responsive.after(SD) {
-  .textWrapper {
-    font-size: 18px;
   }
 }
