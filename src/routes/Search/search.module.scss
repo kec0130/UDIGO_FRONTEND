@@ -81,11 +81,12 @@
 
 .buttonWrapper {
   display: flex;
+  justify-content: space-between;
 
-  button {
+  .button {
     width: 50%;
 
-    + button {
+    + .button {
       margin-left: 20px;
     }
 

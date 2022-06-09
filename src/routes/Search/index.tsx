@@ -1,12 +1,11 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { queryState } from 'states/map'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 
-import Button from 'components/Button'
 import Description from './Description'
+import Buttons from './Buttons'
 import { ImageIcon } from 'assets/svgs'
 import styles from './search.module.scss'
 
@@ -63,7 +62,7 @@ const Search = () => {
     setStatus('done')
   }
 
-  const handleNewImageButtonClick = () => inputRef.current?.click()
+  console.log(status)
 
   return (
     <div className='pageContainer'>
@@ -80,23 +79,7 @@ const Search = () => {
             </label>
           )}
         </div>
-        <div className={styles.buttonWrapper}>
-          {imageSrc && (
-            <>
-              <Button
-                value='다른 이미지 선택'
-                buttonStyle='secondary'
-                disabled={status === 'loading'}
-                onClick={handleNewImageButtonClick}
-              />
-              {response ? (
-                <Link to='/maps'>지도에서 찾기</Link>
-              ) : (
-                <Button value='장소 검색' type='submit' disabled={status === 'loading'} />
-              )}
-            </>
-          )}
-        </div>
+        {imageSrc && <Buttons status={status} inputRef={inputRef} />}
       </form>
     </div>
   )
