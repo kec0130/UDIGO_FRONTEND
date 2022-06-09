@@ -75,7 +75,7 @@
     display: flex;
     align-items: flex-end;
     width: 100%;
-    max-width: 1300px;
+    max-width: sizes.$MAX_WIDTH;
     height: sizes.$GNB_HIGHT;
     padding: 0 20px;
     margin: 0 auto;

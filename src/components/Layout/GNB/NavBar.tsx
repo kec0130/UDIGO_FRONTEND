@@ -15,7 +15,11 @@ const navList: INavItem[] = [
   },
   {
     to: 'search',
-    title: '검색',
+    title: '이미지 검색',
+  },
+  {
+    to: 'maps',
+    title: '지도 검색',
   },
 ]
 

@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import cx from 'classnames'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { queryState } from 'states/map'
@@ -67,9 +66,9 @@ const Search = () => {
   const handleNewImageButtonClick = () => inputRef.current?.click()
 
   return (
-    <div className={cx('pageContainer', styles.searchPage)}>
+    <div className='pageContainer'>
       <Description status={status} response={response} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.imageUploadForm}>
         <input type='file' accept='image/*' onChange={handleFileChange} ref={inputRef} id='image-input' />
         <div className={styles.imageWrapper}>
           {imageSrc ? (
@@ -91,7 +90,7 @@ const Search = () => {
                 onClick={handleNewImageButtonClick}
               />
               {response ? (
-                <Link to='maps'>지도에서 찾기</Link>
+                <Link to='/maps'>지도에서 찾기</Link>
               ) : (
                 <Button value='장소 검색' type='submit' disabled={status === 'loading'} />
               )}
