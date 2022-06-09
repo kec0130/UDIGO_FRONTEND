@@ -20,3 +20,8 @@ export const mapCenterState = atom({
     lng: 0,
   },
 })
+
+export const selectedIndexState = atom({
+  key: 'selectedIndexState',
+  default: 0,
+})

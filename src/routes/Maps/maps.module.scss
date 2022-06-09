@@ -33,6 +33,10 @@
     input {
       flex: 1;
       color: colors.$GRAY3;
+
+      &::placeholder {
+        color: colors.$GRAY9;
+      }
     }
   }
 }
@@ -49,7 +53,7 @@
   }
 }
 
-.placeInfo {
+.placeCard {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -111,7 +115,7 @@
 }
 
 @include responsive.after(SD) {
-  .infoText {
+  .textWrapper {
     margin-left: 20px;
   }
 }
