@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import Navigation from './Navigation'
+import NavBar from './NavBar'
 import { LogoText } from 'assets/svgs'
-import styles from '../layout.module.scss'
+import styles from './gnb.module.scss'
 
 const GNB = () => {
   return (
@@ -13,7 +13,7 @@ const GNB = () => {
             <LogoText />
           </Link>
         </div>
-        <Navigation />
+        <NavBar />
       </div>
     </header>
   )

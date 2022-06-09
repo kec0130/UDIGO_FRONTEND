@@ -25,7 +25,7 @@
   }
 }
 
-.navigation {
+.navBar {
   border-bottom: 1px solid colors.$GRAYE;
 
   ul {
@@ -81,7 +81,7 @@
     margin: 0 auto;
 
     .logoWrapper,
-    .navigation {
+    .navBar {
       height: 100%;
       border: none;
     }

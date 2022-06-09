@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import cx from 'classnames'
 
-import styles from '../layout.module.scss'
+import styles from './gnb.module.scss'
 
 interface INavItem {
   to: string
@@ -19,9 +19,9 @@ const navList: INavItem[] = [
   },
 ]
 
-const Navigation = () => {
+const NavBar = () => {
   return (
-    <nav className={styles.navigation}>
+    <nav className={styles.navBar}>
       <ul>
         {navList.map((item) => (
           <li key={`gnb-item-${item.title}`}>
@@ -35,4 +35,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavBar
