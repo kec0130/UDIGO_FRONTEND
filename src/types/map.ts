@@ -30,3 +30,7 @@ export interface IMapSearchApiRes {
   meta: IMetaData
   documents: IPlace[]
 }
+
+export interface IMapProps {
+  data: IPlace[] | undefined
+}

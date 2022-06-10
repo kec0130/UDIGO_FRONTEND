@@ -2,18 +2,17 @@ import cx from 'classnames'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { selectedIndexState } from 'states/map'
-import { IPlace } from 'types/map'
+import { IMapProps } from 'types/map'
 import { ITEMS_PER_PAGE } from './constants'
 
 import { ArrowLeftIcon, ArrowRightIcon, MapIcon } from 'assets/svgs'
 import styles from './maps.module.scss'
 
-interface IProps {
-  searchResult: IPlace[]
-}
-
-const PlaceCard = ({ searchResult }: IProps) => {
+const PlaceCard = ({ data }: IMapProps) => {
   const [selectedIndex, setSelectedIndex] = useRecoil(selectedIndexState)
+
+  if (!data || data.length === 0)
+    return <div className={cx(styles.placeCard, styles.noResult)}>검색 결과가 없습니다.</div>
 
   const handlePrevClick = () => {
     setSelectedIndex((prev) => Math.max(prev - 1, 0))
@@ -23,10 +22,7 @@ const PlaceCard = ({ searchResult }: IProps) => {
     setSelectedIndex((prev) => Math.min(prev + 1, ITEMS_PER_PAGE - 1))
   }
 
-  if (searchResult.length === 0)
-    return <div className={cx(styles.placeCard, styles.noResult)}>검색 결과가 없습니다.</div>
-
-  const selectedPlace = searchResult[selectedIndex]
+  const selectedPlace = data[selectedIndex]
 
   return (
     <div className={styles.placeCard}>

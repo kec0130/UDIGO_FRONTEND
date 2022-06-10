@@ -1,22 +1,31 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { useCurrentPosition } from 'hooks/useCurrentPosition'
-import { queryState, currentPositionState } from 'states/map'
+import { queryState, currentPositionState, selectedIndexState } from 'states/map'
 import { getMapSearchApi } from 'services/map'
-import { IPlace } from 'types/map'
 import { ITEMS_PER_PAGE } from './constants'
 
-import PlaceCard from './PlaceCard'
 import KakaoMap from './KakaoMap'
+import PlaceCard from './PlaceCard'
 import { SearchIcon } from 'assets/svgs'
 import styles from './maps.module.scss'
 
 const Maps = () => {
   const [query, setQuery] = useRecoil(queryState)
   const [inputValue, setInputValue] = useState(query || '')
-  const [searchResult, setSearchResult] = useState<IPlace[]>([])
   const [currentPosition] = useRecoil(currentPositionState)
+  const [, , resetSelectedIndex] = useRecoil(selectedIndexState)
+
+  const { data } = useQuery(
+    ['getMapSearchApi', query],
+    () => getMapSearchApi({ ...currentPosition, query, size: ITEMS_PER_PAGE }).then((res) => res.data.documents),
+    {
+      refetchOnWindowFocus: false,
+      enabled: !!query,
+    }
+  )
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value)
@@ -26,18 +35,10 @@ const Maps = () => {
     e.preventDefault()
     if (!inputValue.trim() || inputValue === query) return
     setQuery(inputValue)
+    resetSelectedIndex()
   }
 
   useCurrentPosition()
-
-  useEffect(() => {
-    query &&
-      getMapSearchApi({
-        ...currentPosition,
-        query,
-        size: ITEMS_PER_PAGE,
-      }).then((res) => setSearchResult(res.data.documents))
-  }, [currentPosition, query])
 
   return (
     <div className={styles.mapPage}>
@@ -47,8 +48,8 @@ const Maps = () => {
           <input type='text' placeholder='장소를 검색하세요.' value={inputValue} onChange={handleInputChange} />
         </div>
       </form>
-      <KakaoMap searchResult={searchResult} />
-      <PlaceCard searchResult={searchResult} />
+      <KakaoMap data={data} />
+      {query && <PlaceCard data={data} />}
     </div>
   )
 }

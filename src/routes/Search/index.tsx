@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { queryState } from 'states/map'
+import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 
 import Description from './Description'
@@ -44,22 +45,22 @@ const Search = () => {
     if (!imageFile) return
     formData.append('image', imageFile)
 
-    // getPlaceInferenceApi(formData)
-    //   .then((res) => res.json())
-    //   .then((data: IPlaceApiRes) => {
-    //     setResponse(data)
-    //     setQuery(data.label_category)
-    //     setStatus('done')
-    //   })
+    getPlaceInferenceApi(formData)
+      .then((res) => res.json())
+      .then((data: IPlaceApiRes) => {
+        setResponse(data)
+        setQuery(data.label_category)
+        setStatus('done')
+      })
 
     // dummy data
-    const data: IPlaceApiRes = {
-      label_category: '쇼핑몰',
-      sentence: '화려한 쇼핑몰이군요!',
-    }
-    setResponse(data)
-    setQuery(data.label_category)
-    setStatus('done')
+    // const data: IPlaceApiRes = {
+    //   label_category: '쇼핑몰',
+    //   sentence: '화려한 쇼핑몰이군요!',
+    // }
+    // setResponse(data)
+    // setQuery(data.label_category)
+    // setStatus('done')
   }
 
   return (
