@@ -1,24 +1,35 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 
 import { useRecoil } from 'hooks/useRecoil'
-import { currentPositionState, mapCenterState, queryState, selectedIndexState } from 'states/map'
+import { currentPositionState, mapCenterState, selectedIndexState } from 'states/map'
 import { IPlace } from 'types/map'
 
 import styles from './maps.module.scss'
+import { useEffect } from 'react'
 
 interface IProps {
-  searchResult: IPlace[] | undefined
+  searchResult: IPlace[]
 }
 
 const KakaoMap = ({ searchResult }: IProps) => {
-  const [query] = useRecoil(queryState)
   const [currentPosition] = useRecoil(currentPositionState)
-  const [mapCenter] = useRecoil(mapCenterState)
+  const [mapCenter, setMapCenter] = useRecoil(mapCenterState)
   const [selectedIndex, setSelectedIndex] = useRecoil(selectedIndexState)
 
+  useEffect(() => {
+    setMapCenter(
+      searchResult.length === 0
+        ? currentPosition
+        : {
+            lat: Number(searchResult[selectedIndex].y),
+            lng: Number(searchResult[selectedIndex].x),
+          }
+    )
+  }, [currentPosition, searchResult, selectedIndex, setMapCenter])
+
   return (
-    <Map className={styles.mapWrapper} center={query ? mapCenter : currentPosition}>
-      {searchResult?.map((place, index) => {
+    <Map className={styles.mapWrapper} center={mapCenter}>
+      {searchResult.map((place, index) => {
         const { id, x, y, place_name: placeName } = place
         return (
           <MapMarker

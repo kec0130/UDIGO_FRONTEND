@@ -63,9 +63,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 30px 12px;
+  color: colors.$GRAY3;
   background-color: colors.$WHITE;
   border-radius: sizes.$BORDER_RADIUS;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+  &.noResult {
+    justify-content: center;
+  }
 
   .left {
     display: flex;
@@ -76,7 +81,6 @@
       margin: 0 8px;
       font-size: 14px;
       line-height: 1.3;
-      color: colors.$GRAY3;
     }
 
     .title {
@@ -97,6 +101,10 @@
         width: 30px;
         height: 30px;
         margin-right: 8px;
+
+        @include responsive.after(SD) {
+          margin-right: 20px;
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { useCurrentPosition } from 'hooks/useCurrentPosition'
-import { queryState, currentPositionState, mapCenterState, selectedIndexState } from 'states/map'
+import { queryState, currentPositionState } from 'states/map'
 import { getMapSearchApi } from 'services/map'
 import { IPlace } from 'types/map'
 import { ITEMS_PER_PAGE } from './constants'
@@ -15,10 +15,8 @@ import styles from './maps.module.scss'
 const Maps = () => {
   const [query, setQuery] = useRecoil(queryState)
   const [inputValue, setInputValue] = useState(query || '')
+  const [searchResult, setSearchResult] = useState<IPlace[]>([])
   const [currentPosition] = useRecoil(currentPositionState)
-  const [, setMapCenter] = useRecoil(mapCenterState)
-  const [searchResult, setSearchResult] = useState<IPlace[]>()
-  const [selectedIndex] = useRecoil(selectedIndexState)
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value)
@@ -35,20 +33,11 @@ const Maps = () => {
   useEffect(() => {
     query &&
       getMapSearchApi({
+        ...currentPosition,
         query,
-        lat: currentPosition.lat,
-        lng: currentPosition.lng,
         size: ITEMS_PER_PAGE,
       }).then((res) => setSearchResult(res.data.documents))
-  }, [currentPosition.lat, currentPosition.lng, query])
-
-  useEffect(() => {
-    if (!searchResult) return
-    setMapCenter({
-      lat: Number(searchResult[selectedIndex].y),
-      lng: Number(searchResult[selectedIndex].x),
-    })
-  }, [searchResult, selectedIndex, setMapCenter])
+  }, [currentPosition, query])
 
   return (
     <div className={styles.mapPage}>

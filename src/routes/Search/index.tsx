@@ -62,8 +62,6 @@ const Search = () => {
     setStatus('done')
   }
 
-  console.log(status)
-
   return (
     <div className='pageContainer'>
       <Description status={status} response={response} />
