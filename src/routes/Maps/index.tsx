@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 
 import { useRecoil } from 'hooks/useRecoil'
 import { useCurrentPosition } from 'hooks/useCurrentPosition'
-import { queryState, currentPositionState, selectedIndexState } from 'states/map'
+import { currentPositionState, selectedIndexState } from 'states/map'
 import { getMapSearchApi } from 'services/map'
 import { ITEMS_PER_PAGE } from './constants'
 
@@ -13,17 +14,22 @@ import { SearchIcon } from 'assets/svgs'
 import styles from './maps.module.scss'
 
 const Maps = () => {
-  const [query, setQuery] = useRecoil(queryState)
-  const [inputValue, setInputValue] = useState(query || '')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const searchWord = searchParams.get('keyword') || ''
+
+  const [inputValue, setInputValue] = useState(searchWord || '')
   const [currentPosition] = useRecoil(currentPositionState)
   const [, , resetSelectedIndex] = useRecoil(selectedIndexState)
 
-  const { data } = useQuery(
-    ['getMapSearchApi', query],
-    () => getMapSearchApi({ ...currentPosition, query, size: ITEMS_PER_PAGE }).then((res) => res.data.documents),
+  const { data, isLoading } = useQuery(
+    ['getMapSearchApi', searchWord],
+    () =>
+      getMapSearchApi({ ...currentPosition, query: searchWord, size: ITEMS_PER_PAGE }).then(
+        (res) => res.data.documents
+      ),
     {
       refetchOnWindowFocus: false,
-      enabled: !!query,
+      enabled: !!searchWord,
     }
   )
 
@@ -33,8 +39,8 @@ const Maps = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!inputValue.trim() || inputValue === query) return
-    setQuery(inputValue)
+    if (!inputValue.trim() || inputValue === searchWord) return
+    setSearchParams({ keyword: inputValue })
     resetSelectedIndex()
   }
 
@@ -49,7 +55,7 @@ const Maps = () => {
         </div>
       </form>
       <KakaoMap data={data} />
-      {query && <PlaceCard data={data} />}
+      {!isLoading && searchWord && <PlaceCard data={data} />}
     </div>
   )
 }

@@ -1,7 +1,5 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 
-import { useRecoil } from 'hooks/useRecoil'
-import { queryState } from 'states/map'
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 
@@ -15,7 +13,7 @@ const Search = () => {
   const [imageSrc, setImageSrc] = useState('')
   const [imageFile, setImageFile] = useState<File>()
   const [response, setResponse] = useState<IPlaceApiRes>()
-  const [, setQuery] = useRecoil(queryState)
+  const [searchWord, setSearchWord] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,17 +47,17 @@ const Search = () => {
       .then((res) => res.json())
       .then((data: IPlaceApiRes) => {
         setResponse(data)
-        setQuery(data.label_category)
+        setSearchWord(data.label_category)
         setStatus('done')
       })
 
     // dummy data
     // const data: IPlaceApiRes = {
-    //   label_category: '쇼핑몰',
-    //   sentence: '화려한 쇼핑몰이군요!',
+    //   label_category: '박물관',
+    //   sentence: '화려한 박물관이군요!',
     // }
     // setResponse(data)
-    // setQuery(data.label_category)
+    // setSearchWord(data.label_category)
     // setStatus('done')
   }
 
@@ -78,7 +76,7 @@ const Search = () => {
             </label>
           )}
         </div>
-        {imageSrc && <Buttons status={status} inputRef={inputRef} />}
+        {imageSrc && <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />}
       </form>
     </div>
   )

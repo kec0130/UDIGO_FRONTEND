@@ -9,9 +9,10 @@ import styles from './search.module.scss'
 interface IProps {
   status: TSearchStatus
   inputRef: RefObject<HTMLInputElement>
+  searchWord: string
 }
 
-const Buttons = ({ status, inputRef }: IProps) => {
+const Buttons = ({ status, inputRef, searchWord }: IProps) => {
   const handleNewImageButtonClick = () => inputRef.current?.click()
 
   return (
@@ -24,7 +25,7 @@ const Buttons = ({ status, inputRef }: IProps) => {
         className={styles.button}
       />
       {status === 'done' ? (
-        <Link to='/maps'>지도에서 찾기</Link>
+        <Link to={`/maps?keyword=${searchWord}`}>지도에서 찾기</Link>
       ) : (
         <Button value='장소 검색' type='submit' disabled={status === 'loading'} className={styles.button} />
       )}

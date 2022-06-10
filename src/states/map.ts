@@ -1,10 +1,5 @@
 import { atom } from 'recoil'
 
-export const queryState = atom({
-  key: 'queryState',
-  default: '',
-})
-
 export const currentPositionState = atom({
   key: 'currentPositionState',
   default: {
