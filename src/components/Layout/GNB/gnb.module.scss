@@ -3,7 +3,7 @@
 @use '/src/styles/constants/levels';
 @use '/src/styles/mixins/responsive';
 
-.headerNav {
+.gnb {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  border-bottom: 1px solid colors.$GRAY50;
+  border-bottom: 1px solid colors.$GRAYE;
 
   svg {
     height: 20px;
@@ -25,8 +25,8 @@
   }
 }
 
-.navigation {
-  border-bottom: 1px solid colors.$GRAY50;
+.navBar {
+  border-bottom: 1px solid colors.$GRAYE;
 
   ul {
     display: flex;
@@ -42,7 +42,7 @@
 
   a {
     font-weight: 500;
-    color: colors.$GRAY800;
+    color: colors.$GRAY3;
 
     &::after {
       position: absolute;
@@ -67,21 +67,21 @@
 }
 
 @include responsive.after(SD) {
-  .headerNav {
-    border-bottom: 1px solid colors.$GRAY50;
+  .gnb {
+    border-bottom: 1px solid colors.$GRAYE;
   }
 
   .headerWrapper {
     display: flex;
     align-items: flex-end;
     width: 100%;
-    max-width: 1300px;
+    max-width: sizes.$MAX_WIDTH;
     height: sizes.$GNB_HIGHT;
-    padding: 0 10px;
+    padding: 0 20px;
     margin: 0 auto;
 
     .logoWrapper,
-    .navigation {
+    .navBar {
       height: 100%;
       border: none;
     }

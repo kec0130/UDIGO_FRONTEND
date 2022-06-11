@@ -30,3 +30,12 @@ export interface IMapSearchApiRes {
   meta: IMetaData
   documents: IPlace[]
 }
+
+export interface IMapProps {
+  data: IPlace[] | undefined
+}
+
+export interface IPosition {
+  lat: number
+  lng: number
+}

@@ -8,26 +8,23 @@
   align-items: center;
   justify-content: center;
   height: 60px;
-  margin-top: 20px;
+  margin: 20px 0 16px;
   line-height: 1.5;
-  color: colors.$GRAY800;
+  color: colors.$GRAY3;
 
-  .loading {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  @include responsive.after(SD) {
+    font-size: 18px;
+  }
 
-    svg {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
+  mark {
+    color: colors.$PRIMARY;
+    background-color: transparent;
   }
 }
 
-form {
+.imageUploadForm {
   max-width: 800px;
-  margin: 16px auto 0;
+  margin: 0 auto;
 
   input {
     display: none;
@@ -36,11 +33,11 @@ form {
 
 .imageWrapper {
   height: calc(100vh - 280px);
-  min-height: 400px;
+  min-height: 300px;
   margin-bottom: 20px;
   overflow: hidden;
   border: 1.5px dashed colors.$PRIMARY;
-  border-radius: 10px;
+  border-radius: sizes.$BORDER_RADIUS;
 
   label {
     display: flex;
@@ -49,7 +46,7 @@ form {
     justify-content: center;
     width: 100%;
     height: 100%;
-    color: colors.$GRAY300;
+    color: colors.$GRAY9;
     text-align: center;
     cursor: pointer;
 
@@ -72,36 +69,17 @@ form {
 
 .buttonWrapper {
   display: flex;
+  justify-content: space-between;
 
-  button {
+  .button {
     width: 50%;
 
-    + button {
+    + .button {
       margin-left: 20px;
     }
 
     &:disabled {
       cursor: wait;
     }
-  }
-
-  a {
-    width: 50%;
-    margin-left: 20px;
-    line-height: 40px;
-    color: colors.$WHITE;
-    text-align: center;
-    background-color: colors.$PRIMARY;
-    border-radius: sizes.$BORDER_RADIUS;
-
-    &:active {
-      background-color: colors.$PRIMARY_PRESSED;
-    }
-  }
-}
-
-@include responsive.after(SD) {
-  .textWrapper {
-    font-size: 18px;
   }
 }

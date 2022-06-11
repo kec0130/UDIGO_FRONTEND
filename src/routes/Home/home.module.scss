@@ -5,6 +5,7 @@
 .homepage {
   padding-left: 0;
   padding-right: 0;
+  color: colors.$GRAY1;
 
   .description {
     padding: 0 20px;
@@ -12,106 +13,122 @@
 
   section {
     margin: 40px 0 20px;
+
+    + section {
+      margin-top: 60px;
+    }
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 500;
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 500;
-  }
-
-  h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
   }
 
   p {
-    margin: 10px 0 20px;
+    margin: 16px 0 24px;
+    color: colors.$GRAY3;
     line-height: 1.5;
+  }
 
-    @include responsive.after(SD) {
+  strong {
+    color: colors.$PRIMARY;
+  }
+
+  @include responsive.after(SD) {
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
       font-size: 18px;
     }
   }
+}
 
-  .introBackground {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
+.introBackground {
+  height: 300px;
+  background-size: cover;
+  background-position: right;
+
+  @include responsive.after(SD) {
+    height: 400px;
+  }
+
+  @include responsive.after(LD) {
+    margin: 0 20px;
+  }
+
+  .introduction {
+    padding: 30px 20px 20px;
+    text-align: right;
+
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: colors.$GRAY1;
+    }
 
     @include responsive.after(SD) {
-      height: 400px;
-    }
-
-    @include responsive.after(LD) {
-      margin: 0 20px;
-    }
-
-    .introduction {
-      padding: 30px 20px 20px;
-      text-align: right;
-
-      @include responsive.after(SD) {
-        padding-right: 40px;
-      }
-      @include responsive.after(LD) {
-        padding-right: 60px;
-      }
+      padding-right: 40px;
 
       p {
-        margin-top: 20px;
         font-size: 20px;
       }
     }
-  }
 
-  .guideImages {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-    li {
-      border: 1px solid colors.$GRAY100;
-    }
-
-    @include responsive.after(SD) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  .sampleImages {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-    @include responsive.after(ML) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include responsive.after(SD) {
-      grid-template-columns: repeat(4, 1fr);
-    }
     @include responsive.after(LD) {
-      grid-template-columns: repeat(6, 1fr);
+      padding-right: 60px;
     }
   }
+}
 
-  .guideImages,
-  .sampleImages {
-    li {
+.imageList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  li {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: sizes.$BORDER_RADIUS;
+
+    img {
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      border-radius: sizes.$BORDER_RADIUS;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      object-fit: cover;
     }
+  }
+}
+
+.guideImages {
+  li {
+    border: 1px solid colors.$GRAYD;
+  }
+
+  @include responsive.after(SD) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+}
+
+.sampleImages {
+  @include responsive.after(ML) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include responsive.after(SD) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include responsive.after(LD) {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

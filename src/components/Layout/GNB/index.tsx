@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom'
 
-import Navigation from './Navigation'
+import NavBar from './NavBar'
 import { LogoText } from 'assets/svgs'
-import styles from '../layout.module.scss'
+import styles from './gnb.module.scss'
 
 const GNB = () => {
   return (
-    <header className={styles.headerNav}>
+    <header className={styles.gnb}>
       <div className={styles.headerWrapper}>
         <div className={styles.logoWrapper}>
           <Link to='/'>
             <LogoText />
           </Link>
         </div>
-        <Navigation />
+        <NavBar />
       </div>
     </header>
   )

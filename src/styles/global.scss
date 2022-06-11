@@ -3,7 +3,7 @@
 @use '/src/styles/mixins/responsive';
 
 .pageContainer {
-  max-width: 1300px;
+  max-width: sizes.$MAX_WIDTH;
   min-height: 100vh;
   padding: sizes.$GNB_HIGHT_M 20px 20px;
   margin: 0 auto;
@@ -12,9 +12,4 @@
     min-height: 100vh;
     padding-top: sizes.$GNB_HIGHT;
   }
-}
-
-mark {
-  color: colors.$PRIMARY;
-  background-color: transparent;
 }

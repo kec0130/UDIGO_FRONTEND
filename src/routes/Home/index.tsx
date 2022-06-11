@@ -1,26 +1,33 @@
 import cx from 'classnames'
 
-import { BASE_URL } from './constants/images'
+import { SAMPLE, GUIDE } from './constants/text'
+import { GUIDE_IMAGES, SAMPLE_IMAGES } from './constants/images'
+
+import Introduction from './Introduction'
 import Description from './Description'
 import styles from './home.module.scss'
 
 const Home = () => {
   return (
     <div className={cx('pageContainer', styles.homepage)}>
-      <div
-        className={styles.introBackground}
-        style={{ backgroundImage: `url(${BASE_URL}/images/home-background.jpeg)` }}
-      >
-        <div className={styles.introduction}>
-          <h1>AI가 찾아주는 나만의 Place</h1>
-          <p>
-            사진 속 장소를 찾아주는 UDIGO로
-            <br /> 장소 검색도 스마트하게.
-          </p>
-        </div>
-      </div>
+      <Introduction />
       <div className={styles.description}>
-        <Description />
+        <Description
+          title={GUIDE.title}
+          description={GUIDE.description}
+          imageList={GUIDE_IMAGES}
+          className='guideImages'
+          keyPrefix='guide-image'
+          directory='user_guide'
+        />
+        <Description
+          title={SAMPLE.title}
+          description={SAMPLE.description}
+          imageList={SAMPLE_IMAGES}
+          className='sampleImages'
+          keyPrefix='sample-image'
+          directory='images_en'
+        />
       </div>
     </div>
   )
