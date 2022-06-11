@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 
 import { useRecoil } from 'hooks/useRecoil'
-import { currentPositionState, mapCenterState, selectedIndexState } from 'states/map'
-import { IMapProps } from 'types/map'
+import { currentPositionState, selectedIndexState } from 'states/map'
+import { IMapProps, IPosition } from 'types/map'
 
 import styles from './maps.module.scss'
 
 const KakaoMap = ({ data }: IMapProps) => {
   const [currentPosition] = useRecoil(currentPositionState)
-  const [mapCenter, setMapCenter] = useRecoil(mapCenterState)
   const [selectedIndex, setSelectedIndex] = useRecoil(selectedIndexState)
+  const [mapCenter, setMapCenter] = useState<IPosition>({ lat: 0, lng: 0 })
 
   useEffect(() => {
     setMapCenter(

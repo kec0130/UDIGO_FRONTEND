@@ -34,3 +34,8 @@ export interface IMapSearchApiRes {
 export interface IMapProps {
   data: IPlace[] | undefined
 }
+
+export interface IPosition {
+  lat: number
+  lng: number
+}

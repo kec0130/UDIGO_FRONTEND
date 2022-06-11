@@ -1,15 +1,8 @@
 import { atom } from 'recoil'
+import { IPosition } from 'types/map'
 
-export const currentPositionState = atom({
+export const currentPositionState = atom<IPosition>({
   key: 'currentPositionState',
-  default: {
-    lat: 0,
-    lng: 0,
-  },
-})
-
-export const mapCenterState = atom({
-  key: 'mapCenterState',
   default: {
     lat: 0,
     lng: 0,
