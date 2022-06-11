@@ -51,15 +51,7 @@ const Search = () => {
         setSearchWord(data.label_category)
         setStatus('done')
       })
-
-    // TODO: remove dummy data
-    // const data: IPlaceApiRes = {
-    //   label_category: '박물관',
-    //   sentence: '화려한 박물관이군요!',
-    // }
-    // setResponse(data)
-    // setSearchWord(data.label_category)
-    // setStatus('done')
+      .catch(() => setStatus('error'))
   }
 
   return (

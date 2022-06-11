@@ -5,7 +5,7 @@ interface IProps {
   message: string
 }
 
-const ErrorMessage = ({ message }: IProps) => {
+const Error = ({ message }: IProps) => {
   return (
     <div className={styles.error}>
       <ErrorIcon />
@@ -14,4 +14,4 @@ const ErrorMessage = ({ message }: IProps) => {
   )
 }
 
-export default ErrorMessage
+export default Error

@@ -1,6 +1,7 @@
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 
-import LoadingSpinner from 'components/LoadingSpinner'
+import Loading from 'components/Loading'
+import Error from 'components/Error'
 import styles from './search.module.scss'
 
 interface IProps {
@@ -14,13 +15,6 @@ const INIT_TEXT = (
     <br />
     AI가 사진 속 장소를 구분해줄 거예요.
   </p>
-)
-
-const LOADING_TEXT = (
-  <div className={styles.loading}>
-    <LoadingSpinner />
-    <span>이미지 분석 중</span>
-  </div>
 )
 
 const Description = ({ status, response }: IProps) => {
@@ -44,8 +38,9 @@ const Description = ({ status, response }: IProps) => {
   return (
     <div className={styles.textWrapper}>
       {status === 'init' && INIT_TEXT}
-      {status === 'loading' && LOADING_TEXT}
+      {status === 'loading' && <Loading message='이미지 분석 중' />}
       {status === 'done' && resultSentence}
+      {status === 'error' && <Error message='AI가 아파요. 빨리 회복할게요.' />}
     </div>
   )
 }

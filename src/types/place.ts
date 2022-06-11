@@ -3,4 +3,4 @@ export interface IPlaceApiRes {
   sentence: string
 }
 
-export type TSearchStatus = 'init' | 'loading' | 'done'
+export type TSearchStatus = 'init' | 'loading' | 'done' | 'error'
