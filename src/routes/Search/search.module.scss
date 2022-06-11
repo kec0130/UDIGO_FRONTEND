@@ -94,18 +94,4 @@
       cursor: wait;
     }
   }
-
-  a {
-    width: 50%;
-    margin-left: 20px;
-    line-height: 40px;
-    color: colors.$WHITE;
-    text-align: center;
-    background-color: colors.$PRIMARY;
-    border-radius: sizes.$BORDER_RADIUS;
-
-    &:active {
-      background-color: colors.$PRIMARY_PRESSED;
-    }
-  }
 }

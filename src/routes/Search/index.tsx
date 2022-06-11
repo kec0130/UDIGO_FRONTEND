@@ -33,6 +33,7 @@ const Search = () => {
       if (!result) return
       setImageSrc(result as string)
     }
+    setStatus('init')
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -51,7 +52,7 @@ const Search = () => {
         setStatus('done')
       })
 
-    // dummy data
+    // TODO: remove dummy data
     // const data: IPlaceApiRes = {
     //   label_category: '박물관',
     //   sentence: '화려한 박물관이군요!',
