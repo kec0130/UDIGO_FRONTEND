@@ -28,20 +28,20 @@ UDIGO는 이미지 분류 AI를 활용한 장소 검색 서비스입니다. 사�
 ## 주요 기능 및 구현 방법
 
 ### 이미지로 장소 검색
-<img width="300" alt="스크린샷" src="https://user-images.githubusercontent.com/77032760/173348706-b1ce9114-fc3b-41a6-86ed-2181a530ce6c.gif">
-
 - file input에 이미지를 업로드하면 `FileReader`를 통해 base64 string으로 변환하고 img 태그의 src 속성에 넣어 이미지 preview 기능을 구현했습니다.
 
 - 장소 검색 버튼을 누르면 이미지에서 File 객체를 추출하여 `FormData` 형태로 서버에 POST 요청을 보내고, 서버에 올라가 있는 AI 모델이 이미지를 여러 장소 카테고리 중 하나로 분류하여 그 결과를 보내줍니다. 해당 AI 모델은 기존 프로젝트 당시 제가 훈련시킨 모델이며, [서버](https://github.com/udi-go/UDIGO_AI_SERVER)는 당시 팀원이었던 [정민채](https://github.com/Jungminchae)님이 AWS EC2에 배포하신 것을 활용했습니다.
 
-### 지도 검색
-<img width="300" alt="스크린샷" src="https://user-images.githubusercontent.com/77032760/173348738-5e7c2a77-90d2-4db6-b15f-a2997ad9a6cd.gif">
+<img width="300" alt="스크린샷" src="https://user-images.githubusercontent.com/77032760/173361306-2f15b52a-1187-4750-a359-b85c80f9fdfd.gif">
 
+### 지도 검색
 - 카카오 지도 API를 활용하여 지도를 표시했습니다. React + TS 환경에서 카카오 지도를 쉽게 활용할 수 있도록 해주는 react-kakao-maps-sdk 라이브러리를 사용했습니다.
 
 - AI가 추론한 장소를 지도에서 검색하거나 장소명을 직접 입력하여 검색할 수 있고, 카카오 로컬 API의 '키워드로 장소 검색하기'를 사용하여 검색 결과를 받아왔습니다. 요청을 보낼 때 Geolocation API로 얻은 위/경도를 함께 보내 사용자의 현 위치를 기준으로 검색 결과가 나오도록 했습니다.
 
 - 검색 결과로 얻은 장소들을 지도 위에 마커로 표시하고, 마커를 클릭하거나 하단 장소 정보 카드의 좌우 화살표 버튼을 클릭하여 포커스를 이동할 수 있도록 구현했습니다. 이동할 때 현재 선택된 장소가 항상 지도에 보일 수 있도록 지도의 중심이 해당 장소 위치로 움직이게 설정했습니다.
+
+<img width="300" alt="스크린샷" src="https://user-images.githubusercontent.com/77032760/173361354-ffeba104-f982-4bc2-a428-ffbb0f82defd.gif">
 
 ### 반응형 디자인
 - 모든 페이지에 반응형 디자인을 적용했습니다. 특히 홈 화면에는 이미지가 많기 때문에 `display: grid`를 적용하고 브라우저 폭에 따라 `grid-template-columns`를 조정하여 이미지가 균형감 있게 보일 수 있도록 했습니다.
