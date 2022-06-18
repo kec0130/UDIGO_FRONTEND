@@ -14,15 +14,16 @@ const PlaceCard = ({ data }: IMapProps) => {
   if (!data || data.length === 0)
     return <div className={cx(styles.placeCard, styles.noResult)}>검색 결과가 없습니다.</div>
 
+  const selectedPlace = data[selectedIndex]
+  const lastIndex = Math.min(data.length - 1, ITEMS_PER_PAGE - 1)
+
   const handlePrevClick = () => {
     setSelectedIndex((prev) => Math.max(prev - 1, 0))
   }
 
   const handleNextClick = () => {
-    setSelectedIndex((prev) => Math.min(prev + 1, ITEMS_PER_PAGE - 1))
+    setSelectedIndex((prev) => Math.min(prev + 1, lastIndex))
   }
-
-  const selectedPlace = data[selectedIndex]
 
   return (
     <div className={styles.placeCard}>
@@ -44,12 +45,7 @@ const PlaceCard = ({ data }: IMapProps) => {
         >
           <MapIcon />
         </a>
-        <button
-          type='button'
-          onClick={handleNextClick}
-          disabled={selectedIndex === ITEMS_PER_PAGE - 1}
-          aria-label='next'
-        >
+        <button type='button' onClick={handleNextClick} disabled={selectedIndex === lastIndex} aria-label='next'>
           <ArrowRightIcon />
         </button>
       </div>
