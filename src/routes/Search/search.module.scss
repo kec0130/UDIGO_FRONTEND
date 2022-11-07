@@ -29,6 +29,10 @@
   input {
     display: none;
   }
+
+  button {
+    width: 100%;
+  }
 }
 
 .imageWrapper {
@@ -51,7 +55,7 @@
     cursor: pointer;
 
     svg {
-      stroke: currentColor;
+      stroke: currentcolor;
     }
 
     span {

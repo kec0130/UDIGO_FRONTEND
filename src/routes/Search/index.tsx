@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 
+import Button from 'components/Button'
 import Description from './Description'
 import Buttons from './Buttons'
 import { ImageIcon } from 'assets/svgs'
@@ -69,7 +70,11 @@ const Search = () => {
             </label>
           )}
         </div>
-        {imageSrc && <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />}
+        {imageSrc ? (
+          <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />
+        ) : (
+          <Button value='샘플 이미지 사용하기' buttonStyle='secondary' size='fullWidth' />
+        )}
       </form>
     </div>
   )

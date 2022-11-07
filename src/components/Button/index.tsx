@@ -5,7 +5,7 @@ import styles from './button.module.scss'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   value: string
-  size?: 'large' | 'medium' | 'small'
+  size?: 'fullWidth' | 'large' | 'medium' | 'small'
   buttonStyle?: 'primary' | 'secondary' | 'ghost'
   className?: string
   disabled?: boolean
