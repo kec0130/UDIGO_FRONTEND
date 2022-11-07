@@ -1,5 +1,5 @@
 import { INTRO } from './constants/text'
-import { BASE_URL, INTRO_IMAGE } from './constants/images'
+import { BASE_URL, INTRO_IMAGE } from 'constants/images'
 
 import styles from './home.module.scss'
 

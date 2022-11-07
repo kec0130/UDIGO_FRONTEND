@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
 import { SAMPLE, GUIDE } from './constants/text'
-import { GUIDE_IMAGES, SAMPLE_IMAGES } from './constants/images'
+import { GUIDE_IMAGES, SAMPLE_IMAGES } from 'constants/images'
 
 import Introduction from './Introduction'
 import Description from './Description'
