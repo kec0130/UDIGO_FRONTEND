@@ -2,8 +2,10 @@ import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
+import { useModal } from 'hooks/useModal'
 
 import Button from 'components/Button'
+import Modal from 'components/Modal'
 import Description from './Description'
 import Buttons from './Buttons'
 import { ImageIcon } from 'assets/svgs'
@@ -16,6 +18,7 @@ const Search = () => {
   const [response, setResponse] = useState<IPlaceApiRes>()
   const [searchWord, setSearchWord] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const { isModalOpen, openModal, closeModal } = useModal()
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {
@@ -73,9 +76,14 @@ const Search = () => {
         {imageSrc ? (
           <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />
         ) : (
-          <Button value='샘플 이미지 사용하기' buttonStyle='secondary' size='fullWidth' />
+          <Button value='샘플 이미지 사용하기' buttonStyle='secondary' size='fullWidth' onClick={openModal} />
         )}
       </form>
+      {isModalOpen && (
+        <Modal closeModal={closeModal} title='샘플 이미지 선택하기'>
+          test
+        </Modal>
+      )}
     </div>
   )
 }
