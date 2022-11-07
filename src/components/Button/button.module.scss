@@ -1,8 +1,8 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/constants/sizes';
 
-button {
-  height: 40px;
+.button {
+  height: 50px;
   font-size: 16px;
   border-radius: sizes.$BORDER_RADIUS;
   transition: all 0.2s ease-in-out;

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, MouseEvent, useRef, useState } from 'react'
 
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
@@ -60,6 +60,10 @@ const Search = () => {
       .catch(() => setStatus('error'))
   }
 
+  const handleImageClick = (e: MouseEvent) => {
+    setImageSrc((e.target as HTMLImageElement).src)
+  }
+
   return (
     <div className='pageContainer'>
       <Description status={status} response={response} />
@@ -88,6 +92,8 @@ const Search = () => {
             className='sampleImagesInModal'
             keyPrefix='sample-image'
             directory='images_en'
+            inModal
+            handleImageClick={handleImageClick}
           />
         </Modal>
       )}

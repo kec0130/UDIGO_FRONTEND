@@ -26,7 +26,7 @@ const Button = ({
     <button
       // eslint-disable-next-line react/button-has-type
       type={type}
-      className={cx(styles[size], styles[buttonStyle], className)}
+      className={cx(styles.button, styles[size], styles[buttonStyle], className)}
       disabled={disabled}
       onClick={onClick}
     >
