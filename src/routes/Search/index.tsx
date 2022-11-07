@@ -3,9 +3,11 @@ import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
 import { useModal } from 'hooks/useModal'
+import { SAMPLE_IMAGES } from 'constants/images'
 
 import Button from 'components/Button'
 import Modal from 'components/Modal'
+import ImageGrid from 'components/ImageGrid'
 import Description from './Description'
 import Buttons from './Buttons'
 import { ImageIcon } from 'assets/svgs'
@@ -81,7 +83,12 @@ const Search = () => {
       </form>
       {isModalOpen && (
         <Modal closeModal={closeModal} title='샘플 이미지 선택하기'>
-          test
+          <ImageGrid
+            imageList={SAMPLE_IMAGES}
+            className='sampleImagesInModal'
+            keyPrefix='sample-image'
+            directory='images_en'
+          />
         </Modal>
       )}
     </div>

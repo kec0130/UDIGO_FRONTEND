@@ -49,4 +49,7 @@
   @include responsive.after(ML) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @include responsive.after(SD) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
