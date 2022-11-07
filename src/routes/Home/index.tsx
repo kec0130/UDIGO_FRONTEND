@@ -27,7 +27,9 @@ const Home = () => {
           className='sampleImages'
           keyPrefix='sample-image'
           directory='images_en'
-        />
+        >
+          <a href='/search'>이미지 검색하러 가기 →</a>
+        </Description>
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import cx from 'classnames'
 
 import { IDescription } from './constants/text'
@@ -10,13 +11,15 @@ interface IProps extends IDescription {
   className?: string
   keyPrefix: string
   directory: string
+  children?: ReactNode
 }
 
-const Description = ({ title, description, imageList, className, keyPrefix, directory }: IProps) => {
+const Description = ({ title, description, imageList, className, keyPrefix, directory, children }: IProps) => {
   return (
     <section>
       <h2>{title}</h2>
       <p>{description}</p>
+      {children}
       <ul className={cx(styles.imageList, styles[className || ''])}>
         {imageList.map((image) => (
           <li key={`${keyPrefix}-${image}`}>
