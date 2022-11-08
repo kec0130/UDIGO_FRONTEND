@@ -1,6 +1,6 @@
 export const BASE_URL = 'https://udigo-image.s3.ap-northeast-2.amazonaws.com'
 
-export const INTRO_IMAGE = 'home-background'
+export const BANNER_IMAGE = 'banner'
 
 export const GUIDE_IMAGES = ['guide01', 'guide02', 'guide03', 'guide04']
 
