@@ -23,21 +23,16 @@ const Search = () => {
   const { isModalOpen, openModal, closeModal } = useModal()
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { files },
-    } = e
-
-    if (!files) return
-    const file = files[0]
+    if (!e.currentTarget.files) return
+    const file = e.currentTarget.files[0]
     setImageFile(file)
     setResponse(undefined)
 
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = () => {
-      const { result } = reader
-      if (!result) return
-      setImageSrc(result as string)
+      if (!reader.result) return
+      setImageSrc(reader.result as string)
     }
     setStatus('init')
   }
@@ -47,8 +42,12 @@ const Search = () => {
     setStatus('loading')
 
     const formData = new FormData()
-    if (!imageFile) return
-    formData.append('image', imageFile)
+
+    if (imageFile) {
+      formData.append('image', imageFile)
+    } else {
+      convertURLtoFile(imageSrc).then((res) => formData.append('image', res))
+    }
 
     getPlaceInferenceApi(formData)
       .then((res) => res.json())
@@ -62,6 +61,16 @@ const Search = () => {
 
   const handleImageClick = (e: MouseEvent) => {
     setImageSrc((e.target as HTMLImageElement).src)
+    closeModal()
+  }
+
+  const convertURLtoFile = async (url: string) => {
+    const res = await fetch(url)
+    const data = await res.arrayBuffer()
+    const ext = url.split('.').pop()
+    const filename = url.split('/').pop()
+    const metadata = { type: `image/${ext}` }
+    return new File([data], filename!, metadata)
   }
 
   return (
