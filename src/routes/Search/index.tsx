@@ -52,6 +52,10 @@ const Search = () => {
     getPlaceInferenceApi(formData)
       .then((res) => res.json())
       .then((data: IPlaceApiRes) => {
+        if (!data.label_category) {
+          setStatus('error')
+          return
+        }
         setResponse(data)
         setSearchWord(data.label_category)
         setStatus('done')
