@@ -1,7 +1,7 @@
 import cx from 'classnames'
 
 import { SAMPLE, GUIDE } from './constants/text'
-import { GUIDE_IMAGES, SAMPLE_IMAGES } from './constants/images'
+import { GUIDE_IMAGES, SAMPLE_IMAGES } from 'constants/images'
 
 import Introduction from './Introduction'
 import Description from './Description'
@@ -27,7 +27,9 @@ const Home = () => {
           className='sampleImages'
           keyPrefix='sample-image'
           directory='images_en'
-        />
+        >
+          <a href='/search'>이미지 검색하러 가기 →</a>
+        </Description>
       </div>
     </div>
   )

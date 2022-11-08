@@ -5,7 +5,7 @@ import styles from './button.module.scss'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   value: string
-  size?: 'large' | 'medium' | 'small'
+  size?: 'fullWidth' | 'large' | 'medium' | 'small'
   buttonStyle?: 'primary' | 'secondary' | 'ghost'
   className?: string
   disabled?: boolean
@@ -26,7 +26,7 @@ const Button = ({
     <button
       // eslint-disable-next-line react/button-has-type
       type={type}
-      className={cx(styles[size], styles[buttonStyle], className)}
+      className={cx(styles.button, styles[size], styles[buttonStyle], className)}
       disabled={disabled}
       onClick={onClick}
     >

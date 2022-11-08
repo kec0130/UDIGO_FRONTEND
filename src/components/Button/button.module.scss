@@ -1,10 +1,15 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/constants/sizes';
 
-button {
-  height: 40px;
+.button {
+  height: 50px;
   font-size: 16px;
   border-radius: sizes.$BORDER_RADIUS;
+  transition: all 0.2s ease-in-out;
+
+  &.fullWidth {
+    width: 100%;
+  }
 
   &.large {
     width: 100px;
@@ -22,12 +27,12 @@ button {
     color: colors.$WHITE;
     background-color: colors.$PRIMARY;
 
+    &:hover,
     &:active {
       background-color: colors.$PRIMARY_PRESSED;
     }
 
     &:disabled {
-      background-color: colors.$PRIMARY;
       opacity: 0.6;
     }
   }
@@ -36,8 +41,10 @@ button {
     color: colors.$PRIMARY;
     border: 1.5px solid colors.$PRIMARY;
 
+    &:hover,
     &:active {
-      background-color: colors.$GRAYE;
+      color: colors.$PRIMARY_PRESSED;
+      border-color: colors.$PRIMARY_PRESSED;
     }
 
     &:disabled {
@@ -49,8 +56,9 @@ button {
   &.ghost {
     color: colors.$PRIMARY;
 
+    &:hover,
     &:active {
-      background-color: colors.$GRAYE;
+      color: colors.$PRIMARY_PRESSED;
     }
 
     &:disabled {

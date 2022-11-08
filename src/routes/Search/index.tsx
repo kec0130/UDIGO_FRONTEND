@@ -1,8 +1,13 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, MouseEvent, useRef, useState } from 'react'
 
 import { getPlaceInferenceApi } from 'services/place'
 import { IPlaceApiRes, TSearchStatus } from 'types/place'
+import { useModal } from 'hooks/useModal'
+import { SAMPLE_IMAGES } from 'constants/images'
 
+import Button from 'components/Button'
+import Modal from 'components/Modal'
+import ImageGrid from 'components/ImageGrid'
 import Description from './Description'
 import Buttons from './Buttons'
 import { ImageIcon } from 'assets/svgs'
@@ -15,23 +20,19 @@ const Search = () => {
   const [response, setResponse] = useState<IPlaceApiRes>()
   const [searchWord, setSearchWord] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const { isModalOpen, openModal, closeModal } = useModal()
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { files },
-    } = e
-
-    if (!files) return
-    const file = files[0]
+    if (!e.currentTarget.files) return
+    const file = e.currentTarget.files[0]
     setImageFile(file)
     setResponse(undefined)
 
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = () => {
-      const { result } = reader
-      if (!result) return
-      setImageSrc(result as string)
+      if (!reader.result) return
+      setImageSrc(reader.result as string)
     }
     setStatus('init')
   }
@@ -41,8 +42,12 @@ const Search = () => {
     setStatus('loading')
 
     const formData = new FormData()
-    if (!imageFile) return
-    formData.append('image', imageFile)
+
+    if (imageFile) {
+      formData.append('image', imageFile)
+    } else {
+      convertURLtoFile(imageSrc).then((res) => formData.append('image', res))
+    }
 
     getPlaceInferenceApi(formData)
       .then((res) => res.json())
@@ -52,6 +57,20 @@ const Search = () => {
         setStatus('done')
       })
       .catch(() => setStatus('error'))
+  }
+
+  const handleImageClick = (e: MouseEvent) => {
+    setImageSrc((e.target as HTMLImageElement).src)
+    closeModal()
+  }
+
+  const convertURLtoFile = async (url: string) => {
+    const res = await fetch(url)
+    const data = await res.arrayBuffer()
+    const ext = url.split('.').pop()
+    const filename = url.split('/').pop()
+    const metadata = { type: `image/${ext}` }
+    return new File([data], filename!, metadata)
   }
 
   return (
@@ -69,8 +88,24 @@ const Search = () => {
             </label>
           )}
         </div>
-        {imageSrc && <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />}
+        {imageSrc ? (
+          <Buttons status={status} inputRef={inputRef} searchWord={searchWord} />
+        ) : (
+          <Button value='샘플 이미지 사용하기' buttonStyle='secondary' size='fullWidth' onClick={openModal} />
+        )}
       </form>
+      {isModalOpen && (
+        <Modal closeModal={closeModal} title='샘플 이미지 선택하기'>
+          <ImageGrid
+            imageList={SAMPLE_IMAGES}
+            className='sampleImagesInModal'
+            keyPrefix='sample-image'
+            directory='images_en'
+            inModal
+            handleImageClick={handleImageClick}
+          />
+        </Modal>
+      )}
     </div>
   )
 }

@@ -24,7 +24,7 @@ export const GUIDE: IDescription = {
 }
 
 export const SAMPLE: IDescription = {
-  title: '샘플 이미지',
+  title: '이미지 예시',
   description:
-    'UDIGO가 어떤 장소들을 구분할 수 있는지 궁금하시면 아래 이미지를 다운로드 받아 활용해보세요. 물론, 다른 이미지를 사용하셔도 좋습니다.',
+    'UDIGO는 55가지 카테고리의 장소를 추론할 수 있어요. 아래 이미지처럼 풍경 사진이나 배경이 잘 나온 사진으로 검색해보세요.',
 }
