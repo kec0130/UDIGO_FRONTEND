@@ -37,7 +37,7 @@ const Search = () => {
     setStatus('init')
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('loading')
 
@@ -46,17 +46,20 @@ const Search = () => {
     if (imageFile) {
       formData.append('image', imageFile)
     } else {
-      convertURLtoFile(imageSrc).then((res) => formData.append('image', res))
+      const file = await convertURLtoFile(imageSrc)
+      formData.append('image', file)
     }
 
-    getPlaceInferenceApi(formData)
-      .then((res) => res.json())
-      .then((data: IPlaceApiRes) => {
-        setResponse(data)
-        setSearchWord(data.label_category)
-        setStatus('done')
-      })
-      .catch(() => setStatus('error'))
+    const data = await getPlaceInferenceApi(formData)
+
+    if (!data.label_category) {
+      setStatus('error')
+      return
+    }
+
+    setResponse(data)
+    setSearchWord(data.label_category)
+    setStatus('done')
   }
 
   const handleImageClick = (e: MouseEvent) => {
