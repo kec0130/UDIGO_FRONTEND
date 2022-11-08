@@ -5,11 +5,11 @@
 .pageContainer {
   max-width: sizes.$MAX_WIDTH;
   min-height: 100vh;
-  padding: sizes.$GNB_HIGHT_M 20px 20px;
+  padding: sizes.$GNB_HEIGHT_M 20px 20px;
   margin: 0 auto;
 
   @include responsive.after(SD) {
     min-height: 100vh;
-    padding-top: sizes.$GNB_HIGHT;
+    padding-top: sizes.$GNB_HEIGHT;
   }
 }

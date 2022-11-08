@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/constants/sizes';
 @use '/src/styles/mixins/responsive';
 
 .homepage {
@@ -18,7 +19,7 @@
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 500;
   }
 
@@ -68,22 +69,30 @@
   }
 }
 
-.introBackground {
+.banner {
+  position: relative;
   height: 300px;
+  margin-top: sizes.$GNB_HEIGHT_M;
   background-position: right;
   background-size: cover;
 
   @include responsive.after(SD) {
     height: 400px;
+    margin-top: sizes.$GNB_HEIGHT;
   }
 
   @include responsive.after(LD) {
     margin: 0 20px;
+    margin-top: sizes.$GNB_HEIGHT;
   }
 
-  .introduction {
-    padding: 30px 20px 20px;
+  .textWrapper {
+    position: absolute;
+    right: 0;
+    bottom: 100px;
+    padding: 30px 40px;
     text-align: right;
+    background-color: rgba(255, 255, 255, 40%);
 
     p {
       margin-top: 20px;
@@ -92,7 +101,8 @@
     }
 
     @include responsive.after(SD) {
-      padding-right: 40px;
+      bottom: 200px;
+      padding: 30px 50px;
 
       p {
         font-size: 20px;
@@ -100,7 +110,7 @@
     }
 
     @include responsive.after(LD) {
-      padding-right: 60px;
+      right: 40px;
     }
   }
 }

@@ -5,7 +5,7 @@
 
 .searchForm {
   position: absolute;
-  top: sizes.$GNB_HIGHT_M;
+  top: sizes.$GNB_HEIGHT_M;
   right: 20px;
   left: 20px;
   z-index: levels.$PLACE_INFO;
@@ -14,10 +14,10 @@
   margin-top: 20px;
   background-color: colors.$WHITE;
   border-radius: sizes.$BORDER_RADIUS;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 20%), 0 -1px 0px rgb(0 0 0 / 2%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 20%), 0 -1px 0 rgba(0, 0, 0, 2%);
 
   @include responsive.after(SD) {
-    top: sizes.$GNB_HIGHT;
+    top: sizes.$GNB_HEIGHT;
   }
 
   div {
@@ -66,7 +66,7 @@
   color: colors.$GRAY3;
   background-color: colors.$WHITE;
   border-radius: sizes.$BORDER_RADIUS;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 25%) 0 13px 27px -5px, rgba(0, 0, 0, 30%) 0 8px 16px -8px;
 
   &.noResult {
     justify-content: center;

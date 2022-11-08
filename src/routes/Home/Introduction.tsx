@@ -5,8 +5,8 @@ import styles from './home.module.scss'
 
 const Introduction = () => {
   return (
-    <div className={styles.introBackground} style={{ backgroundImage: `url(${BASE_URL}/images/${BANNER_IMAGE}.jpeg)` }}>
-      <div className={styles.introduction}>
+    <div className={styles.banner} style={{ backgroundImage: `url(${BASE_URL}/images/${BANNER_IMAGE}.jpeg)` }}>
+      <div className={styles.textWrapper}>
         <h1>{INTRO.title}</h1>
         <p>{INTRO.description}</p>
       </div>
