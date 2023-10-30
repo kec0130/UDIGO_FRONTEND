@@ -2,9 +2,10 @@
 
 ## 개요
 
-### [웹 사이트 보기](https://udigo.netlify.app)
+> <https://udigo.netlify.app>
 
-UDIGO는 이미지 분류 AI를 활용한 장소 검색 서비스입니다. 사진을 업로드하면 AI가 사진 속 장소를 추론하여 관련 장소를 지도에서 찾아줍니다.
+UDIGO는 이미지 분류 AI를 활용한 장소 검색 서비스입니다. 사진을 업로드하면 AI가 사진 속 장소를 추론하여 관련 장소를 지도에서 찾아줍니다.  
+*현재 이미지 검색 서비스는 종료되었으며, 지도 검색만 가능합니다.*
 
 이 프로젝트는 AI 부트캠프를 통해 처음으로 개발을 배우게 된 2021년, 제가 기획한 아이디어로 5명의 팀원과 함께 안드로이드 앱으로 출시했던 서비스입니다. 당시 기획과 AI 모델링을 담당하면서 제 아이디어를 직접 구현해보고 싶은 갈망이 생겨 프론트엔드 개발자의 길을 걷게 되었습니다. 그 때 다짐을 떠올리며 앱의 기능을 간소화하여 간단한 웹 사이트로 구현해보았습니다.
 
@@ -12,11 +13,11 @@ UDIGO는 이미지 분류 AI를 활용한 장소 검색 서비스입니다. 사�
 
 ## 로컬 실행 방법
 
-```
-$ git clone https://github.com/udi-go/UDIGO_FRONTEND.git
-$ cd UDIGO_FRONTEND
-$ yarn
-$ yarn start
+```bash
+git clone https://github.com/udi-go/UDIGO_FRONTEND.git
+cd UDIGO_FRONTEND
+yarn
+yarn start
 ```
 
 <br />

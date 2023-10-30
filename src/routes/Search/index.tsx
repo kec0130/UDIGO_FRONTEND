@@ -50,16 +50,20 @@ const Search = () => {
       formData.append('image', file)
     }
 
-    const data = await getPlaceInferenceApi(formData)
+    try {
+      const data = await getPlaceInferenceApi(formData)
 
-    if (!data.label_category) {
+      if (!data.label_category) {
+        setStatus('error')
+        return
+      }
+
+      setResponse(data)
+      setSearchWord(data.label_category)
+      setStatus('done')
+    } catch (error) {
       setStatus('error')
-      return
     }
-
-    setResponse(data)
-    setSearchWord(data.label_category)
-    setStatus('done')
   }
 
   const handleImageClick = (e: MouseEvent) => {
